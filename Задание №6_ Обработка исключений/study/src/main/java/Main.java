@@ -1,5 +1,6 @@
 import operations.*;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -10,9 +11,16 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("КАЛЬКУЛЯТОР");
         System.out.print("Введите первое число: ");
-        Double number1 = scanner.nextDouble();
-        System.out.print("Введите второе число: ");
-        Double number2 = scanner.nextDouble();
+        Double number1, number2;
+        try {
+            number1 = scanner.nextDouble();
+            System.out.print("Введите второе число: ");
+            number2 = scanner.nextDouble();
+        }
+        catch (InputMismatchException e) {
+            System.out.println("Неправильно введено число!");
+            return;
+        }
         System.out.print("Выберите операцию ('+' - сложение, '-' - вычитание, '*' - умножение, '/' - деление): ");
         String operand = scanner.next();
         Operation operation;
